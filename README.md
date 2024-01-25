@@ -1,10 +1,13 @@
-# IP Verification and Tor Detection
+# Tor Detection
 
 ![GitHub Stars](https://img.shields.io/github/stars/dehlirious/tor-detector)
 ![GitHub Issues](https://img.shields.io/github/issues/dehlirious/tor-detector)
 
-This JavaScript tool enables you to check for Canvas Fingerprinting Protection, and detect Tor exit nodes using a variety of sources. 
+This JavaScript tool enables you to check for Canvas Fingerprinting Protection and to detect Tor exit nodes.
 
+## Demonstration
+- You can test the functionality of this script [here](https://zrr.us/x/detect-tor/) (`https://zrr.us/x/detect-tor/`)
+  
 ## Features
 
 - Detect Tor exit nodes using multiple sources, easily extendable with additional IP and Tor sources.
