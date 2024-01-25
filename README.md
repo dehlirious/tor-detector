@@ -22,10 +22,9 @@ This JavaScript tool allows you to verify IP addresses for validity and detect T
 
 To add more sources for IP verification and Tor detection, follow these steps:
 
-1. Open `index.html` in a code editor.
+1. Open `tor.js` in a code editor.
 2. Edit the `ipSources` and `torSources` arrays to include your desired sources.
 3. Save the changes.
-4. Reopen `index.html` in your web browser to use the updated sources.
 
 ## Contributions
 
