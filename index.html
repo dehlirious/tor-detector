@@ -3,22 +3,20 @@
 
 <head>
     <title>Is Tor Tests</title>
-    <script src="tor.js"></script>
+	<script src="tor.js"></script>
 </head>
 
 <body>
     <p id="torStatus">Tor Status: Checking...</p>
     <p id="publicIP">Your public IP address: Loading...</p>
+    <div id="torBehaviorStatus">Tor JavaScript Behavior: Checking...</div>
+    <div id="canvasFingerprintStatus">Canvas Fingerprinting Protection: Checking...</div>
 
     <script>
         // Function to update the status
-        function updateStatus(isTor) {
-            const torStatus = document.getElementById("torStatus");
-            if (isTor) {
-                torStatus.textContent = 'Tor Status: The IP is a Tor exit node.';
-            } else {
-                torStatus.textContent = 'Tor Status: The IP is not a Tor exit node.';
-            }
+        function updateStatus(elementId, status) {
+            const element = document.getElementById(elementId);
+            element.textContent = status;
         }
 
         // Main execution block
@@ -26,11 +24,22 @@
             const fileData = await fetchTorExitNodes();
             const ipAddress = await getPublicIP();
 
-            // Update the status element
-            updateStatus(isTor(ipAddress, fileData));
+            // Update the Tor status element
+            const torStatus = isTor(ipAddress, fileData);
+            updateStatus("torStatus", torStatus ? 'Tor Status: The IP is a Tor exit node.' : 'Tor Status: The IP is not a Tor exit node.');
 
+            // Update the public IP element
             const publicIP = document.getElementById("publicIP");
             publicIP.textContent = 'Your public IP address: ' + ipAddress;
+
+            // Update the Tor JavaScript Behavior status element
+            const torBehaviorStatus = hasTorJavaScriptBehavior();
+            updateStatus("torBehaviorStatus", 'Tor JavaScript Behavior: ' + torBehaviorStatus);
+
+			// Update the Canvas Fingerprinting Protection status element
+			const canvasFingerprintStatus = hasCanvasFingerprintingProtection();
+			updateStatus("canvasFingerprintStatus", 'Canvas Fingerprinting Protection: ' + (!canvasFingerprintStatus));
+
         })();
     </script>
 </body>
