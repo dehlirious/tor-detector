@@ -86,6 +86,7 @@ function hasTorJavaScriptBehavior() {
 }
 
 // true = regular functionality, false = fingerprinting protection
+// will give console.warn 'Blocked X(url) from extracting canvas data because no user input was detected.'
 function hasCanvasFingerprintingProtection() {
   const createCanvas = () => {
     const canvas = document.createElement('canvas');
